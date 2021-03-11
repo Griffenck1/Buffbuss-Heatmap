@@ -8,6 +8,92 @@
     <br>
     <br>
     <h1>Formative Portfolio I: Buffbus Maps Beginnings</h1>
+    <p>
+        First things first, what you see as of right now is the site that will comprise my portfolio in it's very
+        infant stages. I will be snowed in this weekend and plan to do a lot of work on this site, my first goal
+        is to overhaul the UI, UI is not my strong suit but I think I can make it much much better given time. My
+        second goal this weekend will be to incorporate a mapbox showing the range of the buff bus and start putting
+        basic data over the map so that I can show off what my application is capable of when asking for data from other sources.
+    </p>
+    <br>
+    <h2>
+        Project Title: Buffbus Maps
+    </h2>
+    <br>
+    <h2>
+        Overview:
+    </h2>
+    <p>
+        The overall goal with this project is to visualize buff bus usage using geographic data. My primary
+        goal will to be to produce heatmaps that will consist of segments between buff bus stops. The segments
+        will range in color (for example from cool blue to red) in order to show off how many people tend to
+        be using the buff bus on that segment at different times of day and year. Once I have completed this I 
+        will continue finding more things to visualize using the data set, ideally the people that have provided
+        the data used will also have input on what data would be the most useful to visualize
+    </p>
+    <br>
+    <h2>
+        Problem Statement: 
+    </h2>
+    <p>
+        Several departments at the University of Colorado may find this data useful. The depeartment of
+        transportation may want to use this data to help decide how many/ how large of buff busses are
+        needed at different times of day and year along certain routes in order to meet demand without wasting 
+        resources. OIT may also want visualize when buff bus data usage peaks as well as how much data is needed
+        at said peaks in order to properly distribute network resources to the busses.
+    </p>
+    <br>
+    <h2>
+        Users and Audience:
+    </h2>
+    <p>
+        -Users: Students and faculty that use the Buff Bus.
+    </p>
+    <p>
+        -Audience: Departments at CU to whom this data is relevant, OIT and Transportation as of right now.
+    </p>
+    <br>
+    <h2>
+        Roles and Responsibilites:
+    </h2>
+    <p>
+        As of right now I am the only person working on this project, so I wear all the hats. However Chris
+        Hall from class has shown some interest in helping.
+    </p>
+    <br>
+    <h2>
+        Scope and Constraints:
+    </h2>
+    <p>
+        -budget: $0, so pretty limited
+    </p>
+    <p>
+        -timeframe: I have until April 29 to get this work done, so about two months.
+    </p>
+    <br>
+    <h2>
+        Processes to Explore:
+    </h2>
+    <div class='text_and_link'>
+        <p>-To achieve the map boxes I intend to use the following tool:</p>
+        <a class='inline' href="https://www.mapbox.com/">https://www.mapbox.com/</a>
+    </div>
+    <p>
+        -This project will be hosted on AWS so that people can access the functionality if given a link.
+    </p>
+    <p>
+        -Data will be stored and accessed using postgreSQL once again hosted on AWS, I will need to find a way
+        to get the csv data into SQL.
+    </p>
+    <p>
+        -I will reach out to OIT and Transportation in order to acquire additional data.
+    </p>
+    <p>
+        -As far as using the data, my current strongest lead is to use data usage start time as well as total time
+        in order to build a timeframe that a single user is on the bus, if I can find a fairly accurate buffbus schedule
+        I can find how many users are active during a time frame that corresponds to when the buff bus is driving between stops
+        in order to approximate how many people are traveling between stops.
+    </p>
     <%- include('../partials/footer') %>
 </body>
 </html>
