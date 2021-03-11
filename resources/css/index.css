@@ -1,0 +1,59 @@
+body {
+    margin: 0px;
+    background-color: #2b2d2F !important;
+    font-family: 'Montserrat', sans-serif;
+ }
+
+ #navbar {
+    display: flex;
+    background-color: black; /* Black background color */
+    position: fixed; /* Make it stick/fixed */
+    width: 100%; /* Full width */
+    height: 80px;
+    transition: top 0.3s; /* Transition effect when sliding down (and up) */
+  }
+  
+  #navbar h1 {
+    vertical-align: middle;
+    margin-top: 10px;
+    color: gold;
+    font: Montserrat;
+    font-weight: 700;
+    font-size: 40px;
+    margin-left: 10px;
+  }
+
+  /* Style the navbar links */
+  #navbar a {
+    vertical-align: middle;
+    color: white;
+    font: Montserrat;
+    font-weight: 700;
+    font-size: 30px;
+    margin-left: 40px;
+    margin-top: 15px;
+  }
+
+  #navbar a:hover{
+    color: gold;
+    text-decoration: none;
+  }
+
+  h1{
+      margin-left: 10px;
+      color: white;
+      font: Montserrat;
+      font-size: 40px;
+  }
+
+  a {
+    margin-left: 10px;
+    font: Montserrat;
+    color: white;
+    font-size: 30px;
+  }
+
+  a:hover {
+      color: gold;
+      text-decoration: none;
+  }
