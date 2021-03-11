@@ -45,4 +45,8 @@ app.get('/formative_portfolio_I', function(req, res) {
     })
 });
 
-app.listen(8082);
+const PORT = process.env.PORT || 8080;
+
+const server = app.listen(PORT, () => {
+	console.log(`Express running → PORT ${server.address().port}`);
+});
