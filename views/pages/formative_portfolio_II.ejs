@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html>
+<%- include('../partials/header') %>
+<body>
+    <%- include('../partials/navbar') %>
+    <br>
+    <br>
+    <br>
+    <br>
+    <h1>Formative Portfolio II: Buffbus Maps Continued</h1>
+    <p>
+        Since the last portfolio thanks to help from the professor I was able to get some great data from the people
+        in transportation. Unfortunately the data does not quite match up to mine. I have reached back out to them 
+        but the plan right now is that since it is a proof of concept I will move forward by splicing the data I have
+        and then it would be easy to swap to the new data once/ if I get it.
+    </p>
+    <br>
+    <h2>Steps for completion:</h2>
+    <p>
+        1. Upload the data I plan on using from .csv to a postgreSQL server on heroku.
+    </p>
+    <p>
+        2. Work with either ESRI or mapbox and some data to get used to how the tech works.
+    </p>
+    <p>
+        3. Process data in multiple ways to visualize information in ways that may be useful.
+    </p>
+    <p>
+        4. Use your GIS interactive map of choice to build these custom implementations, show several and people can decide what they think is most useful.
+    </p>
+    <p>
+        5. Upload to heroku so that people can interact with my visualizations on a webpage hosted on the cloud.
+    </p>
+    <p>
+        6. Once this is completed think of other data I could reach out for and more visualizations I could create.
+    </p>
+    <br>
+    <h2>Ideas for visualzations so far:</h2>
+    <p>
+        1. Using the data for devices process data such that you can find how many devices were in use on the network during a given timeframe, match this up with the time frame that a bus was between two stops in order to estimate how much traffic a section of a route has. Basically a bus usage heat map.
+    </p>
+    <p>
+        2. A bar chart that shows estimates for bus usage by days of the week to show which days have the most traffic.
+    </p>
+    <p>
+        3. A bar chart that shows estimates for bus usage by hours of the day to show which hours are busiest.
+    </p>
+    <p>
+        4. Manipulate data to estimate where riders got on and left the bus, use this to show popular ultimate destinations by bus users at different times of day. For example, did most people boarding the bus at 7:30 end up on campus near classes? This ignores the fact that people may be sitting through sections of the ride that don't take them towards the ultimate destination and shows where people want to go and when which is closer to my original goal. This could perhaps be shown by points of varying size on the map and have the map be interactive so that you can change the hour of the day.
+    </p>
+    <br>
+    <h2>Tools:</h2>
+    <p>
+        -I am using a node.js/express.js webapp hosted on heroku to host my visualizations.
+    </p>
+    <p>
+        -Originally I planned on presenting my geospatial visualizations using Mapbox but I recently heard that ESRI has a competiting framework and may use that isntead as I have more experience working with ESRI frameworks like ArcGIS.
+    </p>
+    <p>
+        -My data will be loaded into postgreSQL, this will make it much easier to parse and manipulate the data and will let my webapp work with the data.
+    </p>
+    <p>
+        -For additional non-geospatial plots I plan on using plot.ly Node.js, I have experience using plot.ly for python so it should be familiar.
+    </p>
+    <br>
+    <h2>Presentation:</h2>
+    <p>
+        -For my presentation I will present my webapp and it's functionality.
+    </p>
+    <p>
+        -Additionally I can post the url to see the webapp so that people in class can go and interact for themselves.
+    </p>
+    <br>
+    <br>
+    <%- include('../partials/footer') %>
+</body>
+</html>
