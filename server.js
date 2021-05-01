@@ -56,6 +56,7 @@ app.get('/', function(req, res) {
         ]);
     })
     .then(info => {
+        console.log(info);
         var root = info[0];
         for(var item in root){
             destinations.push(new destinationHandler.destinationHandler(item.label, item.count, item.lat, item.lng));
@@ -64,8 +65,6 @@ app.get('/', function(req, res) {
     .catch(err => {
             console.log('error', err);
     });
-
-    console.log(destinations);
 
     res.render('./pages/index',{
         my_title: "index",
