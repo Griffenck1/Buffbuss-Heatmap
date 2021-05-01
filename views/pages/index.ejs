@@ -11,6 +11,13 @@
     <%- include('../partials/footer') %>
     <script>
         console.log(document.getElementById('mapBoxToken'));
+        mapboxgl.accessToken = document.getElementById('mapBoxToken');
+        var map = new mapboxgl.Map({
+            container: 'map',
+            style: 'mapbox://styles/mapbox/light-v9',
+            center: [40.009, -105.258],
+            zoom: 13.64
+        });
     </script>
 </body>
 </html>
