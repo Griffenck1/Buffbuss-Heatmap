@@ -11,6 +11,7 @@ body {
     width: 100%; /* Full width */
     height: 80px;
     transition: top 0.3s; /* Transition effect when sliding down (and up) */
+    z-index: 1;
   }
   
   #navbar h1 {
