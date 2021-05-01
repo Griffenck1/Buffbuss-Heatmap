@@ -103,7 +103,7 @@ app.get('/', function(req, res) {
                     // Add a GeoJSON source containing place coordinates and information.
                     map.addSource('locations', {
                         'type': 'geojson',
-                        'data':` + locations + `
+                        'data':
                     });
                      
                     map.addLayer({
@@ -111,6 +111,7 @@ app.get('/', function(req, res) {
                         'type': 'symbol',
                         'source': 'locations',
                         'paint': {
+                            'circle-radius': ['*', 4, 'count']
                         }
                     });
                 });
