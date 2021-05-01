@@ -76,8 +76,6 @@ app.get('/', function(req, res) {
                     'properties': {
                         'description': destinations[i].label,
                         'count': destinations[i].count
-                    },
-                    'geometry': {
                         'type': 'Point',
                         'coordinates': [destinations[i].lng, destinations[i].lat]
                     }
