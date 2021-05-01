@@ -5,15 +5,36 @@
     <%- include('../partials/navbar') %>
     <div id="map"></div>
     <!--Inject script to build map as 'data'-->
-    <% if (mapBoxToken) { %>
+    <% if (mapBoxToken and locations) { %>
         <script>
             mapBoxToken = JSON.parse('<%- JSON.stringify(mapBoxToken) %>');
+            locations = JSON.parse('<%- JSON.stringify(locations) %>');
+
             mapboxgl.accessToken = mapBoxToken;
             var map = new mapboxgl.Map({
                 container: 'map',
                 style: 'mapbox://styles/mapbox/streets-v11',
                     center: [-105.258, 40.007],
                     zoom: 13.66
+            });
+
+            map.on('load', function () {
+                // Add a GeoJSON source containing place coordinates and information.
+                map.addSource('locations', {
+                    'type': 'geojson',
+                    'data':` + locations + `
+                });
+                
+                map.addLayer({
+                    'id': 'poi-labels',
+                    'type': 'symbol',
+                    'source': 'locations',
+                    'paint': {
+                        // make circles larger as the user zooms from z12 to z22
+                        'circle-radius': 10,
+                        'circle-color': red
+                        }
+                });
             });
         </script>
     <% } %>
