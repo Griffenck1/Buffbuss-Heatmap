@@ -68,21 +68,23 @@ app.get('/', function(req, res) {
             'features': []
             };
 
-        for(var destination in destinations){
+        var i = 0;
+        while(i < destinations.length){
             locations.features.push(
                 {
                     'type': 'Feature',
                     'properties': {
-                        'description': destination.label,
+                        'description': destination[i].label,
                         'icon': 'circle-15',
-                        'count': destination.count
+                        'count': destination[i].count
                     },
                     'geometry': {
                         'type': 'Point',
-                        'coordinates': [destination.lng, destination.lat]
+                        'coordinates': [destination[i].lat, destination[i].lng]
                     }
                 },
             )
+            i += 1;
         }
 
         console.log(locations);
