@@ -58,21 +58,21 @@ app.get('/', function(req, res) {
     .then(info => {
         var i = 0;
         while(i < info[0].length){
-            destinations[i] = new destinationHandler.destinationHandler(info[0][i].label, info[0][i].count, info[0][i].lat, info[0][i].lng);
+            destinations.push(new destinationHandler.destinationHandler(info[0][i].label, info[0][i].count, info[0][i].lat, info[0][i].lng));
             i+=1;
         }
+
+        console.log(destinations);
+
+        res.render('./pages/index',{
+            my_title: "index",
+            data: destinations,
+            mapBoxToken: mapBoxToken
+        })
     })
     .catch(err => {
             console.log('error', err);
     });
-    
-    console.log(destinations[0].label);
-
-    res.render('./pages/index',{
-        my_title: "index",
-        data: destinations,
-        mapBoxToken: mapBoxToken
-    })
 });
 
 /*
