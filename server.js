@@ -114,7 +114,12 @@ app.get('/', function(req, res) {
                 map.addLayer({
                     'id': 'poi-labels',
                     'type': 'symbol',
-                    'source': 'locations'
+                    'source': 'locations',
+                    'paint': {
+                        // make circles larger as the user zooms from z12 to z22
+                        'circle-radius': 10,
+                        'circle-color': red
+                        }
                 });
             });
         `;
