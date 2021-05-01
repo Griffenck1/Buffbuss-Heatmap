@@ -59,17 +59,94 @@ app.get('/', function(req, res) {
     })
 });
 
-/*
-Index/ Maps page except user chooses what slide they see
-*/
-app.post('/', function(req, res) {
-
+app.get('/8-9', function(req, res) {
     res.render('./pages/index',{
         my_title: "index",
         mapBoxToken: mapBoxToken,
-        style: ``
+        style: styles[0]
     })
 });
+
+app.get('/9-10', function(req, res) {
+    res.render('./pages/index',{
+        my_title: "index",
+        mapBoxToken: mapBoxToken,
+        style: styles[1]
+    })
+});
+
+app.get('/10-11', function(req, res) {
+    res.render('./pages/index',{
+        my_title: "index",
+        mapBoxToken: mapBoxToken,
+        style: styles[2]
+    })
+});
+
+app.get('/11-12', function(req, res) {
+    res.render('./pages/index',{
+        my_title: "index",
+        mapBoxToken: mapBoxToken,
+        style: styles[3]
+    })
+});
+
+app.get('/12-13', function(req, res) {
+    res.render('./pages/index',{
+        my_title: "index",
+        mapBoxToken: mapBoxToken,
+        style: styles[4]
+    })
+});
+
+app.get('/13-14', function(req, res) {
+    res.render('./pages/index',{
+        my_title: "index",
+        mapBoxToken: mapBoxToken,
+        style: styles[5]
+    })
+});
+
+app.get('/14-15', function(req, res) {
+    res.render('./pages/index',{
+        my_title: "index",
+        mapBoxToken: mapBoxToken,
+        style: styles[6]
+    })
+});
+
+app.get('/15-16', function(req, res) {
+    res.render('./pages/index',{
+        my_title: "index",
+        mapBoxToken: mapBoxToken,
+        style: styles[7]
+    })
+});
+
+app.get('/16-17', function(req, res) {
+    res.render('./pages/index',{
+        my_title: "index",
+        mapBoxToken: mapBoxToken,
+        style: styles[8]
+    })
+});
+
+app.get('/17-18', function(req, res) {
+    res.render('./pages/index',{
+        my_title: "index",
+        mapBoxToken: mapBoxToken,
+        style: styles[9]
+    })
+});
+
+app.get('/18-19', function(req, res) {
+    res.render('./pages/index',{
+        my_title: "index",
+        mapBoxToken: mapBoxToken,
+        style: styles[10]
+    })
+});
+
 
 /*
 Documentation Page

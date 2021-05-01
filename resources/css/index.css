@@ -13,6 +13,27 @@ body {
     transition: top 0.3s; /* Transition effect when sliding down (and up) */
     z-index: 1;
   }
+
+  #selectionbar{
+    display: flex;
+    background-color: black; /* Black background color */
+    position: fixed; /* Make it stick/fixed */
+    width: 100%; /* Full width */
+    height: 40px;
+    transition: top 0.3s; /* Transition effect when sliding down (and up) */
+    z-index: 1;
+  }
+
+  /* Style the navbar links */
+  #selectionbar a {
+    vertical-align: middle;
+    color: white;
+    font: Montserrat;
+    font-weight: 350;
+    font-size: 20px;
+    margin-left: 40px;
+    margin-top: 10px;
+  }
   
   #navbar h1 {
     vertical-align: middle;
