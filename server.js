@@ -16,6 +16,7 @@ const router = express.Router();
 app.use(bodyParser.urlencoded({extended : true}));
 app.use(bodyParser.json());
 app.set('view engine', 'ejs');
+app.engine('html', hbs.__express);
 app.use(express.static(__dirname + '/'));
 
 //store mapbox requirements
