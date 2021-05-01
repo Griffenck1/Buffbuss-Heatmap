@@ -89,7 +89,7 @@ app.get('/', function(req, res) {
 
         res.render('./pages/index',{
             my_title: "index",
-            data: locations,
+            locations: locations,
             mapBoxToken: mapBoxToken
         })
     })
