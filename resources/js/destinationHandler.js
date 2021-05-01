@@ -6,19 +6,6 @@ class destinationHandler{
         this.lat = lat;
         this.lng = lng;
     }
-
-    get label(){
-        return this.label;
-    }
-    get count(){
-        return this.count;
-    }
-    get lat(){
-        return this.lat;
-    }
-    get lng(){
-        return this.lng;
-    }
 }
 
 module.exports = {destinationHandler}
