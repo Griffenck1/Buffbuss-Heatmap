@@ -70,18 +70,18 @@ app.get('/', function(req, res) {
 
         for(var destination in destinations){
             locations.features.push(
-                {
+                `{
                     'type': 'Feature',
                     'properties': {
-                        'description': destination.label,
+                        'description': `+destination.label+`,
                         'icon': 'circle-15',
-                        'count': destination.count
+                        'count': `+destination.count+`
                     },
                     'geometry': {
                         'type': 'Point',
-                        'coordinates': [destination.lng, destination.lat]
+                        'coordinates': [`+destination.lng+`,`+ destination.lat+`]
                     }
-                },
+                }`
             )
         }
 
