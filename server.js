@@ -59,6 +59,7 @@ app.get('/', function(req, res) {
         var i = 0;
         while(i < info[0].length){
             destinations.push(new destinationHandler.destinationHandler(info[0][i].label, info[0][i].count, info[0][i].lat, info[0][i].lng));
+            i+=1;
         }
     })
     .catch(err => {
