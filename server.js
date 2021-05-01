@@ -69,19 +69,7 @@ app.get('/', function(req, res) {
             };
 
         for(var destination in destinations){
-            locations.features += 
-                `{
-                    'type': 'Feature',
-                    'properties': {
-                        'description': destination.label,
-                        'icon': 'circle-15',
-                        'count': destination.count
-                    },
-                    'geometry': {
-                        'type': 'Point',
-                        'coordinates': [destination.lat, destination.lng]
-                    }
-                }`
+            locations.features += `{'type': 'Feature','properties': {'description': destination.label,'icon': 'circle-15','count': destination.count},'geometry': {'type': 'Point','coordinates': [destination.lat, destination.lng]}}`
         }
 
         console.log(locations);
