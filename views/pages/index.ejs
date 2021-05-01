@@ -33,13 +33,7 @@
                     'source': 'locations',
                     'paint': {
                         // make circles larger as the user zooms from z12 to z22
-                        'circle-radius': [
-                            "interpolate",
-                            ["linear"],
-                            ["get", "c"],
-                            1, 4,
-                            7, 21,
-                            21, 84
+                        'circle-radius': ['get', 'c'],
                         ],
                         'circle-color': '#de3416'
                         }
