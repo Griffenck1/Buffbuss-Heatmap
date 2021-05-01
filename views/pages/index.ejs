@@ -5,7 +5,7 @@
     <%- include('../partials/navbar') %>
     <div id="map"></div>
     <!--Inject script to build map as 'data'-->
-    <% if (mapBoxToken && locations) { %>
+    <% if (mapBoxToken && style) { %>
         <script>
             mapBoxToken = JSON.parse('<%- JSON.stringify(mapBoxToken) %>');
             style = JSON.parse('<%- JSON.stringify(style) %>');
