@@ -70,7 +70,6 @@ app.get('/', function(req, res) {
 
         var i = 0;
         while(i < destinations.length){
-            console.log(destinations[i].count);
             locations.features.push(
                 {
                     'type': 'Feature',

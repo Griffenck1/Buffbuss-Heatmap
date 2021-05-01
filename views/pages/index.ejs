@@ -10,6 +10,8 @@
             mapBoxToken = JSON.parse('<%- JSON.stringify(mapBoxToken) %>');
             locations = JSON.parse('<%- JSON.stringify(locations) %>');
 
+            console.log(locations.properties.count);
+
             mapboxgl.accessToken = mapBoxToken;
             var map = new mapboxgl.Map({
                 container: 'map',
@@ -24,7 +26,7 @@
                     'type': 'geojson',
                     'data': locations
                 });
-                
+
                 map.addLayer({
                     'id': 'poi-labels',
                     'type': 'circle',
