@@ -20,6 +20,7 @@ app.use(express.static(__dirname + '/'));
 
 //store mapbox requirements
 var mapboxgl = require('mapbox-gl/dist/mapbox-gl.js');
+const { Console } = require('console');
 var mapBoxToken = process.env.MAPBOX_ACCESS;
 
 //connect to postgres
@@ -36,8 +37,6 @@ var db = pgp(dbConfig);
 Index/ Maps page
 */
 app.get('/', function(req, res) {
-    //Query the database for needed information
-    client.connect();
 
     var destinations = []
 
@@ -47,6 +46,7 @@ app.get('/', function(req, res) {
                     WHERE start_time > '09:00:00' AND start_time < '10:00:00'
                     GROUP BY s.label, latitude, longitude;`
 
+    //Query the database for needed information
     db.task('get-everything', task => {
         return task.batch([
             task.any(query),
@@ -61,6 +61,8 @@ app.get('/', function(req, res) {
     .catch(err => {
             console.log('error', err);
     });
+
+    Console.log(destinations);
 
     res.render('./pages/index',{
         my_title: "index",
