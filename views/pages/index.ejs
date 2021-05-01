@@ -35,7 +35,7 @@
                         }
                 });
 
-                map.setPaintProperty("circles", "circle-radius", 200)
+                map.setPaintProperty("circles", "circle-radius", ['*', ['number', ['get','count']], 4]);
             });
         </script>
     <% } %>
