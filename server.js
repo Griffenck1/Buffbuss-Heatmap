@@ -111,7 +111,7 @@ app.get('/', function(req, res) {
                         'type': 'symbol',
                         'source': 'locations',
                         'paint': {
-                            'circle-radius': ['*', 4, 'count']
+                            'circle-radius': 8
                         }
                     });
                 });
