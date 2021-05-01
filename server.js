@@ -62,10 +62,22 @@ app.get('/', function(req, res) {
             i+=1;
         }
 
+        var mapboxScript = 
+        `
+            <script>
+                mapboxgl.accessToken = '` + mapBoxToken +`';
+                var map = new mapboxgl.Map({
+                    container: 'map', // container id
+                    style: 'mapbox://styles/mapbox/streets-v11', // style URL
+                    center: [-105.258, 40.007], // starting position [lng, lat]
+                    zoom: 13.66 // starting zoom
+                });
+            </script>
+        `;
+
         res.render('./pages/index',{
             my_title: "index",
-            data: destinations,
-            mapBoxToken: mapBoxToken
+            data: mapboxScript
         })
     })
     .catch(err => {
