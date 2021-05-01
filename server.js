@@ -56,7 +56,6 @@ app.get('/', function(req, res) {
         ]);
     })
     .then(info => {
-        console.log(info);
         var root = info[0];
         for(var item in root){
             console.log(item);
