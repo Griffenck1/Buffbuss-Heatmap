@@ -6,7 +6,8 @@
     <div id="map"></div>
     <!--Inject script to build map as 'data'-->
     <script>
-        mapboxgl.accessToken = "{{mapBoxToken}}";
+        var accessToken = "{{mapBoxToken}}";
+        mapboxgl.accessToken = accessToken;
         var map = new mapboxgl.Map({
             container: 'map',
             style: 'mapbox://styles/mapbox/streets-v11',
