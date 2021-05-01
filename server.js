@@ -65,12 +65,12 @@ app.get('/', function(req, res) {
         //Load location data
         var locations = {
             'type': 'FeatureCollection',
-            'features': []
+            'features': '['
             };
 
         for(var destination in destinations){
-            locations.features.push(
-                {
+            locations.features += 
+                `{
                     'type': 'Feature',
                     'properties': {
                         'description': destination.label,
@@ -81,8 +81,7 @@ app.get('/', function(req, res) {
                         'type': 'Point',
                         'coordinates': [destination.lat, destination.lng]
                     }
-                }
-            )
+                }`
         }
 
         console.log(locations);
@@ -103,7 +102,7 @@ app.get('/', function(req, res) {
                     // Add a GeoJSON source containing place coordinates and information.
                     map.addSource('locations', {
                         'type': 'geojson',
-                        'data':` + locations + `
+                        'data':` + locations + `]
                     });
                      
                     map.addLayer({
@@ -111,7 +110,7 @@ app.get('/', function(req, res) {
                         'type': 'symbol',
                         'source': 'locations',
                         'paint': {
-                            'circle-radius': 8
+                            'circle-radius': ['*', 4, 'count']
                         }
                     });
                 });
