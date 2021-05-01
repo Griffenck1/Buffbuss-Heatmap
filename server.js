@@ -58,11 +58,9 @@ app.get('/', function(req, res) {
     .then(info => {
         var i = 0;
         while(i < info[0].length){
-            destinations.push(new destinationHandler.destinationHandler(info[0][i].label, info[0][i].count, info[0][i].lat, info[0][i].lng));
+            destinations.push(new destinationHandler.destinationHandler(info[0][i].label, info[0][i].count, info[0][i].latitude, info[0][i].longitude));
             i+=1;
         }
-
-        console.log(destinations);
 
         res.render('./pages/index',{
             my_title: "index",
