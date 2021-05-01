@@ -98,23 +98,6 @@ app.get('/', function(req, res) {
                     center: [-105.258, 40.007], // starting position [lng, lat]
                     zoom: 13.66 // starting zoom
                 });
-        
-                map.on('load', function () {
-                    // Add a GeoJSON source containing place coordinates and information.
-                    map.addSource('locations', {
-                        'type': 'geojson',
-                        'data':
-                    });
-                     
-                    map.addLayer({
-                        'id': 'locations',
-                        'type': 'symbol',
-                        'source': 'locations',
-                        'paint': {
-                            'circle-radius': ['*', 4, 'count']
-                        }
-                    });
-                });
             </script>
         `;
 
