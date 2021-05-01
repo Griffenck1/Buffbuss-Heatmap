@@ -87,29 +87,6 @@ app.get('/', function(req, res) {
 
         console.log(locations);
 
-        //Seperate these up becuase together is was cuasing issues
-        var addPointsScript = 
-        `
-            map.on('load', function () {
-                // Add a GeoJSON source containing place coordinates and information.
-                map.addSource('locations', {
-                    'type': 'geojson',
-                    'data':` + locations + `
-                });
-                
-                map.addLayer({
-                    'id': 'poi-labels',
-                    'type': 'symbol',
-                    'source': 'locations',
-                    'paint': {
-                        // make circles larger as the user zooms from z12 to z22
-                        'circle-radius': 10,
-                        'circle-color': red
-                        }
-                });
-            });
-        `;
-
         res.render('./pages/index',{
             my_title: "index",
             data: locations,
