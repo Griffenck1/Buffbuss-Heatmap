@@ -62,6 +62,7 @@ app.get('/', function(req, res) {
             i+=1;
         }
 
+        //build the script to be injected client side
         var mapboxScript = 
         `
             <script>
@@ -71,6 +72,46 @@ app.get('/', function(req, res) {
                     style: 'mapbox://styles/mapbox/streets-v11', // style URL
                     center: [-105.258, 40.007], // starting position [lng, lat]
                     zoom: 13.66 // starting zoom
+                });
+
+                //Load location data
+                var locations = {
+                    'type': 'FeatureCollection',
+                    'features': []
+                };
+        
+                for(var destination in destinations){
+                    places.features.push(
+                        {
+                            'type': 'Feature',
+                            'properties': {
+                                'description': destination.label,
+                                'icon': 'circle-15',
+                                'count': destination.count
+                            },
+                            'geometry': {
+                                'type': 'Point',
+                                'coordinates': [destination.lng, destination.lat]
+                            }
+                        }
+                    )
+                }
+        
+                map.on('load', function () {
+                    // Add a GeoJSON source containing place coordinates and information.
+                    map.addSource('locations', {
+                        'type': 'geojson',
+                        'data': locations
+                    });
+                     
+                    map.addLayer({
+                        'id': 'locations',
+                        'type': 'symbol',
+                        'source': 'locations',
+                        'paint': {
+                            'circle-radius': ['*', 4, 'count']
+                        }
+                    });
                 });
             </script>
         `;
