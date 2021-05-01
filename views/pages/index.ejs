@@ -10,6 +10,7 @@
     <div id='map'></div>
     <%- include('../partials/footer') %>
     <script>
+        console.log(document.getElementById('mapBoxToken'));
         mapboxgl.accessToken = document.getElementById('mapBoxToken');
         var map = new mapboxgl.Map({
             container: 'map',
