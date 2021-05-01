@@ -22,6 +22,7 @@ body {
     height: 40px;
     transition: top 0.3s; /* Transition effect when sliding down (and up) */
     z-index: 1;
+    margin-top: 80px;
   }
 
   /* Style the navbar links */
