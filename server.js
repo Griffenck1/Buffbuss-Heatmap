@@ -74,13 +74,13 @@ app.get('/', function(req, res) {
                 {
                     'type': 'Feature',
                     'properties': {
-                        'description': destination[i].label,
+                        'description': destinations[i].label,
                         'icon': 'circle-15',
-                        'count': destination[i].count
+                        'count': destinations[i].count
                     },
                     'geometry': {
                         'type': 'Point',
-                        'coordinates': [destination[i].lat, destination[i].lng]
+                        'coordinates': [destinations[i].lat, destinations[i].lng]
                     }
                 },
             )
