@@ -66,7 +66,7 @@ app.get('/', function(req, res) {
             console.log('error', err);
     });
     
-    console.log(destinations);
+    console.log(destinations[0].label);
 
     res.render('./pages/index',{
         my_title: "index",
