@@ -50,7 +50,7 @@ app.get('/', function(req, res) {
                     GROUP BY s.label, latitude, longitude;`, (err, res) => {
         if (err) throw err;
         for (let row of res.rows) {
-            destinations.push(new destinationHandler.destinationHandler(row.data[0], row.data[1], row.data[2], row.data[3]))
+            destinations.push(JSON.parse(row));
         }
         client.end();
     });
