@@ -75,7 +75,7 @@ app.get('/', function(req, res) {
                     'type': 'Feature',
                     'properties': {
                         'description': destinations[i].label,
-                        'c': destinations[i].count
+                        'count': destinations[i].count
                     },
                     'geometry': {
                         'type': 'Point',

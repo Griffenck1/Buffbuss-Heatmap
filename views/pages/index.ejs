@@ -10,7 +10,6 @@
             mapBoxToken = JSON.parse('<%- JSON.stringify(mapBoxToken) %>');
             locations = JSON.parse('<%- JSON.stringify(locations) %>');
 
-            console.log(locations.features.properties);
 
             mapboxgl.accessToken = mapBoxToken;
             var map = new mapboxgl.Map({
@@ -33,9 +32,9 @@
                     'source': 'locations',
                     'paint': {
                         // make circles larger as the user zooms from z12 to z22
-                        'circle-radius': ['number',['get', 'c']],
+                        'circle-radius': ['*', ['num', ['get', 'count']], 20];
                         'circle-color': '#de3416'
-                    }
+                        }
                 });
             });
         </script>
