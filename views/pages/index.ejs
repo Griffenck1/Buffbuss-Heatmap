@@ -5,5 +5,14 @@
     <%- include('../partials/navbar') %>
     <div id='map'></div>
     <%- include('../partials/footer') %>
+    <script>
+        mapboxgl.accessToken = mapBoxToken;
+        var map = new mapboxgl.Map({
+            container: 'map',
+            style: 'mapbox://styles/mapbox/light-v9',
+            center: [40.009, -105.258],
+            zoom: 13.64
+        });
+    </script>
 </body>
 </html>

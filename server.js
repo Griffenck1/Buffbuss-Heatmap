@@ -24,6 +24,7 @@ var mapBoxToken = process.env.MAPBOX_ACCESS;
 
 //connect to postgres
 const { Client } = require('pg');
+const { cachedDataVersionTag } = require('v8');
 
 const client = new Client({
   connectionString: process.env.DATABASE_URL,
@@ -61,56 +62,11 @@ app.get('/', function(req, res) {
         }
         client.end();
     });
-     
-    // Build collection for geojson of features to map
-    var locations = {
-    'type': 'FeatureCollection',
-    'features': []
-    };
-
-    //fill out the geojson collection
-    for(let destination of destinations){
-        places.features.push(    
-            {
-            'type': 'Feature',
-            'properties': {
-            'description': destination.label,
-            'icon': 'circle-15'
-            },
-            'geometry': {
-            'type': 'Point',
-            'coordinates': [destination.lat, destination.lng]
-            }
-            }
-        )
-    }
-     
-    map.on('load', function () {
-        // Add a GeoJSON source containing place coordinates and information.
-        map.addSource('locations', {
-            'type': 'geojson',
-            'data': locations
-        });
-        
-        map.addLayer({
-        'id': 'locations',
-        'type': 'circle',
-        'source': 'locations',
-        'paint' : {
-            'circle-radius': [
-                '*',
-                ['count'],
-                4
-            ],
-        }
-    });
-     
-    map.rotateTo(180, { duration: 10000 });
-    });
 
     res.render('./pages/index',{
         my_title: "index",
-        data: map
+        data: destinations,
+        mapBoxToken: mapBoxToken
     })
 });
 
