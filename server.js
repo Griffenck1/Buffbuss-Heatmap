@@ -93,10 +93,10 @@ app.get('/', function(req, res) {
             <script>
                 mapboxgl.accessToken = '` + mapBoxToken +`';
                 var map = new mapboxgl.Map({
-                    container: 'map', // container id
-                    style: 'mapbox://styles/mapbox/streets-v11', // style URL
-                    center: [-105.258, 40.007], // starting position [lng, lat]
-                    zoom: 13.66 // starting zoom
+                    container: 'map',
+                    style: 'mapbox://styles/mapbox/streets-v11',
+                    center: [-105.258, 40.007],
+                    zoom: 13.66
                 });
             </script>
         `;
