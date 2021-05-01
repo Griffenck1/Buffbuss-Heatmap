@@ -1,6 +1,3 @@
-//import our helper code
-var destinationHandler = require('./resources/js/destinationHandler.js')
-
 //dependancies for node.js server
 var express = require('express');
 var app = express();
@@ -23,6 +20,21 @@ var mapboxgl = require('mapbox-gl/dist/mapbox-gl.js');
 const { Console } = require('console');
 var mapBoxToken = process.env.MAPBOX_ACCESS;
 
+//store array of map style urls
+var styles = [
+    'mapbox://styles/griffenck1/cko5o40nd2dkr18nydaxv9xn0',
+    'mapbox://styles/griffenck1/cko4z9oud0bze18rzjf7cu1j9',
+    'mapbox://styles/griffenck1/cko5ohgss2e3b18pdxm7p8crq',
+    'mapbox://styles/griffenck1/cko5ooip628ar17qvf38c9cw4',
+    'mapbox://styles/griffenck1/cko5or8q02egn17n1xujoxyds',
+    'mapbox://styles/griffenck1/cko5oubno1v2417s2yfo4sq20',
+    'mapbox://styles/griffenck1/cko5oyoi21rw917queylhekfr',
+    'mapbox://styles/griffenck1/cko5p36f91v6417pi7lx2pd0u',
+    'mapbox://styles/griffenck1/cko5p6qf328va17mn9ikwbfcd',
+    'mapbox://styles/griffenck1/cko5p9h2s1vbx17pimhuvcjbr',
+    'mapbox://styles/griffenck1/cko5pc35c1s9i17qu7vzenubk'
+]
+
 //connect to postgres
 //Create Database Connection
 var pgp = require('pg-promise')();
@@ -40,63 +52,25 @@ var db = pgp(dbConfig);
 Index/ Maps page
 */
 app.get('/', function(req, res) {
-
-    var destinations = []
-
-    var query = `SELECT s.label, count(ip), latitude, longitude FROM buffbus_data.session
-                    INNER JOIN buffbus_data.stop s on s.id = session.estimated_departure_stop
-                    INNER JOIN buffbus_data.location l on l.label = s.label
-                    WHERE start_time > '09:00:00' AND start_time < '10:00:00'
-                    GROUP BY s.label, latitude, longitude;`
-
-    //Query the database for needed information
-    db.task('get-everything', task => {
-        return task.batch([
-            task.any(query),
-        ]);
+    res.render('./pages/index',{
+        my_title: "index",
+        locations: locations,
+        mapBoxToken: mapBoxToken,
+        style: 'mapbox://styles/mapbox/streets-v11'
     })
-    .then(info => {
-        var i = 0;
-        while(i < info[0].length){
-            destinations.push(new destinationHandler.destinationHandler(info[0][i].label, info[0][i].count, info[0][i].latitude, info[0][i].longitude));
-            i+=1;
-        }
+});
 
-        //Load location data
-        var locations = {
-            'type': 'FeatureCollection',
-            'features': []
-            };
+/*
+Index/ Maps page except user chooses what slide they see
+*/
+app.post('/', function(req, res) {
 
-        var i = 0;
-        while(i < destinations.length){
-            locations.features.push(
-                {
-                    'type': 'Feature',
-                    'properties': {
-                        'description': destinations[i].label,
-                        'count': destinations[i].count
-                    },
-                    'geometry': {
-                        'type': 'Point',
-                        'coordinates': [destinations[i].lng, destinations[i].lat]
-                    }
-                },
-            )
-            i += 1;
-        }
-
-        console.log(locations);
-
-        res.render('./pages/index',{
-            my_title: "index",
-            locations: locations,
-            mapBoxToken: mapBoxToken
-        })
+    res.render('./pages/index',{
+        my_title: "index",
+        locations: locations,
+        mapBoxToken: mapBoxToken,
+        style: ``
     })
-    .catch(err => {
-            console.log('error', err);
-    });
 });
 
 /*

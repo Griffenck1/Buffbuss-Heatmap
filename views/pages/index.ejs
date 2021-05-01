@@ -8,35 +8,14 @@
     <% if (mapBoxToken && locations) { %>
         <script>
             mapBoxToken = JSON.parse('<%- JSON.stringify(mapBoxToken) %>');
-            locations = JSON.parse('<%- JSON.stringify(locations) %>');
-
+            style = JSON.parse('<%- JSON.stringify(style) %>');
 
             mapboxgl.accessToken = mapBoxToken;
             var map = new mapboxgl.Map({
                 container: 'map',
-                style: 'mapbox://styles/mapbox/light-v10',
+                style: style,
                     center: [-105.258, 40.007],
                     zoom: 13.66
-            });
-
-            map.on('load', function () {
-                // Add a GeoJSON source containing place coordinates and information.
-                map.addSource('locations', {
-                    'type': 'geojson',
-                    'data': locations
-                });
-
-                map.addLayer({
-                    'id': 'circles',
-                    'type': 'circle',
-                    'source': 'locations',
-                    'visibility': 'visible',
-                    'paint': {
-                        'circle-color': '#de3416'
-                        }
-                });
-
-                map.setPaintProperty("circles", "circle-radius", ['*', ['number', ['get','count']], 4]);
             });
         </script>
     <% } %>
