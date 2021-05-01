@@ -5,7 +5,14 @@
     <%- include('../partials/navbar') %>
     <div id="map"></div>
     <!--Inject script to build map as 'data'-->
-    <%- data %>
-    <%- data2 %>
+    <script>
+        mapboxgl.accessToken = "{{mapBoxToken}}";
+        var map = new mapboxgl.Map({
+            container: 'map',
+            style: 'mapbox://styles/mapbox/streets-v11',
+                center: [-105.258, 40.007],
+                zoom: 13.66
+        });
+    </script>
 </body>
 </html>

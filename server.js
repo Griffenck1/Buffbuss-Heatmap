@@ -70,36 +70,22 @@ app.get('/', function(req, res) {
 
         for(var destination in destinations){
             locations.features.push(
-                `{
+                {
                     'type': 'Feature',
                     'properties': {
-                        'description': `+destination.label+`,
+                        'description': destination.label,
                         'icon': 'circle-15',
-                        'count': `+destination.count+`
+                        'count': destination.count
                     },
                     'geometry': {
                         'type': 'Point',
-                        'coordinates': [`+destination.lng+`,`+ destination.lat+`]
+                        'coordinates': [destination.lng, destination.lat]
                     }
-                }`
+                },
             )
         }
 
         console.log(locations);
-
-        //build the script to be injected client side
-        var mapboxScript = 
-        `
-            <script>
-                mapboxgl.accessToken = '` + mapBoxToken +`';
-                var map = new mapboxgl.Map({
-                    container: 'map',
-                    style: 'mapbox://styles/mapbox/streets-v11',
-                    center: [-105.258, 40.007],
-                    zoom: 13.66
-                });
-            </script>
-        `;
 
         //Seperate these up becuase together is was cuasing issues
         var addPointsScript = 
@@ -126,8 +112,8 @@ app.get('/', function(req, res) {
 
         res.render('./pages/index',{
             my_title: "index",
-            data: mapboxScript,
-            data2: addPointsScript
+            data: locations,
+            mapBoxToken: mapBoxToken
         })
     })
     .catch(err => {
