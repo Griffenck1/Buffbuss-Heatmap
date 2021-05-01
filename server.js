@@ -56,14 +56,16 @@ app.get('/', function(req, res) {
         ]);
     })
     .then(info => {
-        console.log(info[0][0]);
-        
-            //console.log(item);
-            //destinations.push(new destinationHandler.destinationHandler(item.label, item.count, item.lat, item.lng));
+        var i = 0;
+        while(i < info[0].length){
+            destinations.push(new destinationHandler.destinationHandler(info[0][i].label, info[0][i].count, info[0][i].lat, info[0][i].lng));
+        }
     })
     .catch(err => {
             console.log('error', err);
     });
+    
+    console.log(destinations);
 
     res.render('./pages/index',{
         my_title: "index",
