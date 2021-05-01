@@ -91,7 +91,7 @@ app.get('/', function(req, res) {
                             },
                             'geometry': {
                                 'type': 'Point',
-                                'coordinates': [destination.lng, destination.lat]
+                                'coordinates': [destination.lat, destination.lng]
                             }
                         }
                     )
