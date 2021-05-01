@@ -86,3 +86,7 @@ body {
     display: flex;
     justify-content: flex-start;
   }
+
+  .wrapper {
+    margin-top: 200px;
+  }

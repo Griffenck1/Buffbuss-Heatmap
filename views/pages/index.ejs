@@ -3,7 +3,9 @@
 <%- include('../partials/header') %>
 <body>
     <%- include('../partials/navbar') %>
-    <div id="map"></div>
+    <div class="wrapper">
+        <div id="map"></div>
+    </div>
     <!--Inject script to build map as 'data'-->
     <% if (mapBoxToken && style) { %>
         <script>
