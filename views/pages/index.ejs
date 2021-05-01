@@ -28,10 +28,9 @@
                 });
 
                 map.addLayer({
-                    'id': 'poi-labels',
+                    'id': 'depart-circles',
                     'type': 'circle',
                     'source': 'locations',
-                    'source-layer': 'bd2021',
                     'paint': {
                         // make circles larger as the user zooms from z12 to z22
                         'circle-radius': ['*', ['number', ['get', 'count']], 4],

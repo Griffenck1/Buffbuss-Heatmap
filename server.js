@@ -75,7 +75,6 @@ app.get('/', function(req, res) {
                     'type': 'Feature',
                     'properties': {
                         'description': destinations[i].label,
-                        'icon': 'circle-15',
                         'count': destinations[i].count
                     },
                     'geometry': {
