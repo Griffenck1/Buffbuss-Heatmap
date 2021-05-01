@@ -69,7 +69,7 @@ app.get('/', function(req, res) {
             };
 
         for(var destination in destinations){
-            places.features.push(
+            locations.features.push(
                 {
                     'type': 'Feature',
                     'properties': {
