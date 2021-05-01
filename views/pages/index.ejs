@@ -5,15 +5,17 @@
     <%- include('../partials/navbar') %>
     <div id="map"></div>
     <!--Inject script to build map as 'data'-->
-    <script>
-        var accessToken = "{{mapBoxToken}}";
-        mapboxgl.accessToken = accessToken;
-        var map = new mapboxgl.Map({
-            container: 'map',
-            style: 'mapbox://styles/mapbox/streets-v11',
-                center: [-105.258, 40.007],
-                zoom: 13.66
-        });
-    </script>
+    <% if (mapBoxToken) { %>
+        <script>
+            mapBoxToken = JSON.parse('<%- JSON.stringify(mapBoxToken) %>');
+            mapboxgl.accessToken = mapBoxToken;
+            var map = new mapboxgl.Map({
+                container: 'map',
+                style: 'mapbox://styles/mapbox/streets-v11',
+                    center: [-105.258, 40.007],
+                    zoom: 13.66
+            });
+        </script>
+    <% } %>
 </body>
 </html>

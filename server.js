@@ -11,13 +11,11 @@ var path = require('path');
 const bodyParser = require("body-parser");
 const { response } = require('express');
 const router = express.Router();
-var exphbs  = require('express-handlebars');
 
 //allows the app to use .ejs files with a view engine
 app.use(bodyParser.urlencoded({extended : true}));
 app.use(bodyParser.json());
 app.set('view engine', 'ejs');
-app.engine('html', exphbs);
 app.use(express.static(__dirname + '/'));
 
 //store mapbox requirements
