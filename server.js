@@ -54,7 +54,6 @@ Index/ Maps page
 app.get('/', function(req, res) {
     res.render('./pages/index',{
         my_title: "index",
-        locations: locations,
         mapBoxToken: mapBoxToken,
         style: 'mapbox://styles/mapbox/streets-v11'
     })
@@ -67,7 +66,6 @@ app.post('/', function(req, res) {
 
     res.render('./pages/index',{
         my_title: "index",
-        locations: locations,
         mapBoxToken: mapBoxToken,
         style: ``
     })
