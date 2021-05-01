@@ -23,15 +23,14 @@ var mapboxgl = require('mapbox-gl/dist/mapbox-gl.js');
 var mapBoxToken = process.env.MAPBOX_ACCESS;
 
 //connect to postgres
-const { Client } = require('pg');
-const { cachedDataVersionTag } = require('v8');
+//Create Database Connection
+var pgp = require('pg-promise')();
 
-const client = new Client({
-  connectionString: process.env.DATABASE_URL,
-  ssl: {
-    rejectUnauthorized: false
-  }
-});
+const dbConfig = {
+    connectionString: process.env.DATABASE_URL,
+};
+
+var db = pgp(dbConfig);
 
 /*
 Index/ Maps page
@@ -40,19 +39,27 @@ app.get('/', function(req, res) {
     //Query the database for needed information
     client.connect();
 
-    var destinations = [];
+    var destinations = []
 
-    //query the database for the required information
-    client.query(`SELECT s.label, count(ip), latitude, longitude FROM buffbus_data.session
+    var query = `SELECT s.label, count(ip), latitude, longitude FROM buffbus_data.session
                     INNER JOIN buffbus_data.stop s on s.id = session.estimated_departure_stop
                     INNER JOIN buffbus_data.location l on l.label = s.label
                     WHERE start_time > '09:00:00' AND start_time < '10:00:00'
-                    GROUP BY s.label, latitude, longitude;`, (err, res) => {
-        if (err) throw err;
-        for (let row of res.rows) {
-            destinations.push(JSON.stringify(row));
+                    GROUP BY s.label, latitude, longitude;`
+
+    db.task('get-everything', task => {
+        return task.batch([
+            task.any(query),
+        ]);
+    })
+    .then(info => {
+        var root = info[0];
+        for(var item in root){
+            destinations.push(new destinationHandler(item.label, item.count, item.lat, item.lng));
         }
-        client.end();
+    })
+    .catch(err => {
+            console.log('error', err);
     });
 
     res.render('./pages/index',{
