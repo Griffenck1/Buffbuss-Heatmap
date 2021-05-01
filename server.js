@@ -62,6 +62,29 @@ app.get('/', function(req, res) {
             i+=1;
         }
 
+        //Load location data
+        var locations = {
+            'type': 'FeatureCollection',
+            'features': []
+            };
+
+        for(var destination in destinations){
+            places.features.push(
+                {
+                    'type': 'Feature',
+                    'properties': {
+                        'description': destination.label,
+                        'icon': 'circle-15',
+                        'count': destination.count
+                    },
+                    'geometry': {
+                        'type': 'Point',
+                        'coordinates': [destination.lat, destination.lng]
+                    }
+                }
+            )
+        }
+
         //build the script to be injected client side
         var mapboxScript = 
         `
@@ -73,35 +96,12 @@ app.get('/', function(req, res) {
                     center: [-105.258, 40.007], // starting position [lng, lat]
                     zoom: 13.66 // starting zoom
                 });
-
-                //Load location data
-                var locations = {
-                    'type': 'FeatureCollection',
-                    'features': []
-                };
-        
-                for(var destination in destinations){
-                    places.features.push(
-                        {
-                            'type': 'Feature',
-                            'properties': {
-                                'description': destination.label,
-                                'icon': 'circle-15',
-                                'count': destination.count
-                            },
-                            'geometry': {
-                                'type': 'Point',
-                                'coordinates': [destination.lat, destination.lng]
-                            }
-                        }
-                    )
-                }
         
                 map.on('load', function () {
                     // Add a GeoJSON source containing place coordinates and information.
                     map.addSource('locations', {
                         'type': 'geojson',
-                        'data': locations
+                        'data':` + locations + `
                     });
                      
                     map.addLayer({
