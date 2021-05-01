@@ -65,11 +65,24 @@ app.get('/', function(req, res) {
         //Load location data
         var locations = {
             'type': 'FeatureCollection',
-            'features': '['
+            'features': []
             };
 
         for(var destination in destinations){
-            locations.features += `{'type': 'Feature','properties': {'description': destination.label,'icon': 'circle-15','count': destination.count},'geometry': {'type': 'Point','coordinates': [destination.lat, destination.lng]}}`
+            locations.features.push(
+                {
+                    'type': 'Feature',
+                    'properties': {
+                        'description': destination.label,
+                        'icon': 'circle-15',
+                        'count': destination.count
+                    },
+                    'geometry': {
+                        'type': 'Point',
+                        'coordinates': [destination.lat, destination.lng]
+                    }
+                },
+            )
         }
 
         console.log(locations);
@@ -90,7 +103,7 @@ app.get('/', function(req, res) {
                     // Add a GeoJSON source containing place coordinates and information.
                     map.addSource('locations', {
                         'type': 'geojson',
-                        'data':` + locations + `]
+                        'data':` + locations + `
                     });
                      
                     map.addLayer({
