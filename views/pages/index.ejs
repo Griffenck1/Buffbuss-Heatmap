@@ -26,17 +26,16 @@
                     'data': locations
                 });
 
-                map.map.setPaintProperty()
-
                 map.addLayer({
                     'id': 'circles',
                     'type': 'circle',
                     'source': 'locations',
                     'paint': {
-                        'circle-radius': 200,
                         'circle-color': '#de3416'
                         }
                 });
+
+                map.setPaintProperty("circles", "circle-radius", 200)
             });
         </script>
     <% } %>
