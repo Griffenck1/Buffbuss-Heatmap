@@ -37,14 +37,6 @@ const client = new Client({
 Index/ Maps page
 */
 app.get('/', function(req, res) {
-    mapboxgl.accessToken = mapBoxToken;
-    var map = new mapboxgl.Map({
-        container: 'map',
-        style: 'mapbox://styles/mapbox/light-v9',
-        center: [40.009, -105.258],
-        zoom: 13.64
-    });
-
     //Query the database for needed information
     client.connect();
 
