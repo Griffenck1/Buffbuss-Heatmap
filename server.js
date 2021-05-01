@@ -119,20 +119,6 @@ app.get('/', function(req, res) {
             });
         `;
 
-        map.on('load', function () {
-            // Add a GeoJSON source containing place coordinates and information.
-            map.addSource('places', {
-                'type': 'geojson',
-                'data': places
-            });
-             
-            map.addLayer({
-                'id': 'poi-labels',
-                'type': 'symbol',
-                'source': 'places'
-            });
-        });
-
         res.render('./pages/index',{
             my_title: "index",
             data: mapboxScript,
