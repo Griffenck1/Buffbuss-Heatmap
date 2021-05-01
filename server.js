@@ -85,6 +85,8 @@ app.get('/', function(req, res) {
             )
         }
 
+        console.log(locations);
+
         //build the script to be injected client side
         var mapboxScript = 
         `
