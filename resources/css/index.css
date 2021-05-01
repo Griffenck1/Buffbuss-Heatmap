@@ -25,6 +25,10 @@ body {
     margin-top: 80px;
   }
 
+  #selectionbar a:hover{
+    color: lightgray;
+  }
+
   /* Style the navbar links */
   #selectionbar a {
     vertical-align: middle;

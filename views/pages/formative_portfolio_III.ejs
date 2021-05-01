@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html>
+<%- include('../partials/header') %>
+<body>
+    <%- include('../partials/navbar') %>
+    <br>
+    <br>
+    <br>
+    <br>
+    <h1>Formative Portfolio III: Buffbus returns</h1>
+    <br>
+    <h2>Goals:</h2>
+    <p>
+        My goals for this project were to see if I could use wireless usage data provided by OIT in order to 
+        provide a solid estimate of buff bus usage. I thought that if I could see what times the buff bus saw
+        the most traffic, as well as were the majority of that traffic was wanting to go, I could help to 
+        illuminate when and where faculty could focus transit resources in order to minimize cost while 
+        improving the transit experience.
+    <br>
+    <h2>Where I got the data:</h2>
+    <p>
+        This project started with and was inspired by the data provided by OIT on buff bus wireless usage and was provided
+        by the professor early on. However the professor provided more of the data once it was clear that there was interest in it.
+        As for the transportation data, the professor helped me get into contact with the Unversity of Colorado's Transportation department
+        who ere able to give me data on when and where the buff bus stopped over the course of a single day which was enough for
+        a proof of concept.
+    </p>
+    <br>
+    <h2>How I cleaned the data:</h2>
+    <p>
+        To clean the data I made extensive use of SQL. First I cleaned out all data for wireless sessions that existed outside of timeframe
+        provided by the bus location data. Additionally I put much of the data into table with joins and foreign keys. Ultimately I processed my 
+        data using some of the most complicated SQL I have ever written as I will explain in a bit. Said SQL is available to view in the source code of 
+        this project in the data directory.
+    </p>
+    <br>
+    <h2>Early Ideas:</h2>
+    <p>
+        Originally I wanted to take a three pronged approach with all custom built solutions. The first idea I had was a route heat map were the color of the route would be a brighter
+        more attention grabbing color, the second idea was a map utilizing graduated symbols (circles that get 
+        bigger as data gets larger) that could estimate/ show where most people who get on the bus at a certain time ended
+        up going to. I thought that knowing how many people want to go where and when was the most valuable insight 
+        I could have, and if it was dicovered that many people sat through going the wrong way because they wanted to
+        go the opposite direction of the bus it could bring insight into how we can make sure that people can go where
+        they want to during high demand.
+    </p>
+    <br>
+    <h2>Final Visualization:</h2>
+    <p>
+        The final visualization can be seen and interacted with in the "maps" portion of this web site.
+    </p>
+    <br>
+    <h2>Project Process:</h2>
+    <p>
+        My project process started with gathering data that I though could be useful. Following that I built
+        the infrastructure for my database and webapp. After that I processed my data and got to work completing
+        the visualization. This was a pretty straightforward process, however my decision to implement everything
+        from scratch meant that the amount of work for the one visualization I was able to complete was pretty staggering.
+        MapBox proved to be suprisingly hard to work with, and I am in general a very poor front end developer so I had to 
+        abondon two of the three approaches I wanted to take, however I am happy with the outcome of the approach I was able
+        to complete. I don't really regret making life harder on myself because I learned a lot about working with real data 
+        and now I know for the future that in general it is better to learn and use frameworks that already exist as it will 
+        save you time and headaches. The biggest issue I ran into was MapBox being very difficult, I wanted to make the entire
+        application dynamically generated at first, but the documentation on how to make graduated symbols was entirely broken
+        and after 8+ hours I made the heartbreakign decision to create the maps in MapBox studio, and use links to the maps.
+        Despite this setback I feel I have learned a lot and think this site is pretty neat.
+    </p>
+    <br>
+    <br>
+    <%- include('../partials/footer') %>
+</body>
+</html>
