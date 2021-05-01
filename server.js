@@ -80,7 +80,7 @@ app.get('/', function(req, res) {
                     },
                     'geometry': {
                         'type': 'Point',
-                        'coordinates': [destinations[i].lat, destinations[i].lng]
+                        'coordinates': [destinations[i].lng, destinations[i].lat]
                     }
                 },
             )
