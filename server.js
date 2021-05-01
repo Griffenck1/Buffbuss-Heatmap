@@ -58,7 +58,7 @@ app.get('/', function(req, res) {
     .then(info => {
         var root = info[0];
         for(var item in root){
-            destinations.push(new destinationHandler(item.label, item.count, item.lat, item.lng));
+            destinations.push(new destinationHandler.destinationHandler(item.label, item.count, item.lat, item.lng));
         }
     })
     .catch(err => {
